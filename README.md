@@ -14,11 +14,13 @@ That's why I had the idea to take this approach further and provide a container 
 ## Usage
 Just copy you files in the `/www` folder of the container.
 
-Example Dockerfile:
+Your example Dockerfile:
 ```shell
 FROM rouhim/althttpd
 COPY ./mywebsite /www
 ```
+
+This is the simplest example of how to serve your static web files. The port is already exposed to 80 and the entrypoint is configured as well.
 
 ## Used materials
  * https://sqlite.org/althttpd/doc/trunk/althttpd.md
