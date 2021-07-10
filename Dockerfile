@@ -2,7 +2,7 @@ FROM alpine as builder
 RUN apk add --no-cache gcc musl-dev
 
 ADD https://sqlite.org/althttpd/raw/001b7cc47f3f2cbc7899ecb3dd16cc359baec3e1672c32414354c499d37c17ce?at=althttpd.c /althttpd.c
-RUN gcc -static -Os -o althttpd althttpd.c && strip althttpd
+RUN gcc -static -O3 -o althttpd althttpd.c && strip althttpd
 
 #############################################
 
