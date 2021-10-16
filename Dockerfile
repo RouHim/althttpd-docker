@@ -15,4 +15,4 @@ COPY index.html /www/
 
 USER nobody
 EXPOSE 80
-ENTRYPOINT ["/althttpd", "-root", "/www", "-port", "80", "-logfile", "/dev/stderr"]
+ENTRYPOINT ["/althttpd", "-root", "/www", "-port", "80", "-bind", "0.0.0.0", "-logfile", "/dev/stderr"]
