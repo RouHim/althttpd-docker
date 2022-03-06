@@ -14,5 +14,5 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY index.html /www/
 
 USER nobody
-EXPOSE 80
-ENTRYPOINT ["/althttpd", "-root", "/www", "-port", "80", "-logfile", "/dev/stderr"]
+EXPOSE 8080
+ENTRYPOINT ["/althttpd", "-root", "/www", "-port", "8080", "-logfile", "/dev/stderr"]
