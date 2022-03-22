@@ -20,7 +20,7 @@ jobs:
           docker build . -t rouhim/althttpd
           docker push rouhim/althttpd
       - name: Update docker hub description
-        uses: peter-evans/dockerhub-description@v2
+        uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
