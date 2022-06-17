@@ -22,7 +22,7 @@ COPY ./mywebsite /www
 
 This is the simplest example of how to serve your static web files. The port is already exposed to 8080 and the entrypoint is configured as well.
 
-## Used materials
+## Resources
  * https://sqlite.org/althttpd/doc/trunk/althttpd.md
  * https://github.com/jveres/althttpd-xsim
  * https://news.ycombinator.com/item?id=27431910
