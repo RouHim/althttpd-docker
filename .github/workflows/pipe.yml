@@ -40,7 +40,6 @@ jobs:
           file: Containerfile
           tags: ${{ env.IMAGE_NAME }}:${{ env.TAG }}
           platforms: linux/${{ matrix.container-image-arch }}
-          outputs: type=oci
           push: true
 
       - name: Update docker hub description
