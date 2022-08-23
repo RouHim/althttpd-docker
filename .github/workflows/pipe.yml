@@ -6,7 +6,7 @@ on:
     - cron: 0 0 */7 * *  # run once a week
 
 env:
-  IMAGE_NAME: docker.io/rouhim/althttpd
+  IMAGE_NAME: rouhim/althttpd
   TAG: latest
 
 jobs:
