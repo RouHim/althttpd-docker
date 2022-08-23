@@ -35,17 +35,28 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Build container image
-        uses: docker/build-push-action@v3
+        id: build_image
+        uses: redhat-actions/buildah-build@v2
         with:
-          file: Containerfile
-          tags: ${{ env.IMAGE_NAME }}:${{ env.TAG }}
-          platforms: linux/${{ matrix.container-image-arch }}
-          push: true
+          image: ${{ env.IMAGE_NAME }}
+          tags: ${{ env.TAG }}
+          archs: ${{ matrix.container-image-arch }}
+          containerfiles: |
+            ./Containerfile      
 
-      - name: Update docker hub description
-        if: github.ref_name == 'main' # only update description if the branch is main
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rouhim/althttpd
+      - name: Echo Outputs
+        run: |
+          echo "Image: ${{ steps.build_image.outputs.image }}"
+          echo "Tags: ${{ steps.build_image.outputs.tags }}"
+          echo "Tagged Image: ${{ steps.build_image.outputs.image-with-tag }}"    
+
+#  publish:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Update docker hub description
+#        if: github.ref_name == 'main' # only update description if the branch is main
+#        uses: peter-evans/dockerhub-description@v3
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#          repository: rouhim/althttpd
