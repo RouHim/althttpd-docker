@@ -90,6 +90,8 @@ jobs:
       - name: Restore container image
         run: podman load --input arm.tar
 
+      - name: List container images
+        run: podman images
 
       - name: Create container image manifast
         run: buildah manifest create ${{ env.IMAGE_NAME }}:${{ env.TAG }}
