@@ -109,7 +109,7 @@ jobs:
         run: podman login docker.io --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Push to docker hub
-        run: buildah manifest push --all docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+        run: buildah manifest push --all multiarch-manifest docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
 
 #      - name: Update docker hub description
