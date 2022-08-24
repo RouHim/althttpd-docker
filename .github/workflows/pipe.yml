@@ -97,13 +97,13 @@ jobs:
         run: buildah manifest create multiarch-manifest
 
       - name: Add amd64
-        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_amd64
+        run: buildah manifest add multiarch-manifest ${{ env.IMAGE_NAME }}:${{ env.TAG }}_amd64
 
       - name: Add arm64
-        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm64
+        run: buildah manifest add multiarch-manifest ${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm64
 
       - name: Add arm
-        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm
+        run: buildah manifest add multiarch-manifest ${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm
 
       - name: Push to docker hub
         run: buildah manifest push --all --creds ${{ secrets.DOCKERHUB_USERNAME }}:${{ secrets.DOCKERHUB_PASSWORD }} docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
