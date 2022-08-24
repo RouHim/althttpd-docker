@@ -105,8 +105,11 @@ jobs:
       - name: Add arm
         run: buildah manifest add multiarch-manifest ${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm
 
+      - name: Login to docker hub
+        run: podman login docker.io --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_PASSWORD }}
+
       - name: Push to docker hub
-        run: buildah manifest push --all --creds ${{ secrets.DOCKERHUB_USERNAME }}:${{ secrets.DOCKERHUB_PASSWORD }} docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+        run: buildah manifest push --all docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
 
 #      - name: Update docker hub description
