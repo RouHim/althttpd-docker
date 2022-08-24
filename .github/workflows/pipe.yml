@@ -36,7 +36,7 @@ jobs:
           tags: ${{ env.TAG }}_${{ matrix.container-image-arch }}
           archs: ${{ matrix.container-image-arch }}
           containerfiles: |
-            ./Containerfile      
+            ./Containerfile
 
       - name: Save container image
         run: podman save -o ${{ matrix.container-image-arch }}.tar ${{ env.IMAGE_NAME }}:${{ env.TAG }}_${{ matrix.container-image-arch }}
@@ -94,19 +94,19 @@ jobs:
         run: podman images
 
       - name: Create container image manifast
-        run: buildah manifest create ${{ env.IMAGE_NAME }}:${{ env.TAG }}
+        run: buildah manifest create multiarch-manifest
 
       - name: Add amd64
-        run: buildah manifest add ${{ env.IMAGE_NAME }}:${{ env.TAG }} docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_amd64
+        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_amd64
 
       - name: Add arm64
-        run: buildah manifest add ${{ env.IMAGE_NAME }}:${{ env.TAG }} docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm64
+        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm64
 
       - name: Add arm
-        run: buildah manifest add ${{ env.IMAGE_NAME }}:${{ env.TAG }} docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm
+        run: buildah manifest add multiarch-manifest docker://${{ env.IMAGE_NAME }}:${{ env.TAG }}_arm
 
       - name: Push to docker hub
-        run: buildah manifest push --creds ${{ secrets.DOCKERHUB_USERNAME }}:${{ secrets.DOCKERHUB_PASSWORD }} --all ${{ env.IMAGE_NAME }}:${{ env.TAG }}
+        run: buildah manifest push --all --creds ${{ secrets.DOCKERHUB_USERNAME }}:${{ secrets.DOCKERHUB_PASSWORD }} docker://docker.io/${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
 
 #      - name: Update docker hub description

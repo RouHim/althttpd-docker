@@ -34,3 +34,4 @@ entrypoint is configured as well.
 * https://sqlite.org/althttpd/doc/trunk/althttpd.md
 * https://github.com/jveres/althttpd-xsim
 * https://news.ycombinator.com/item?id=27431910
+* https://danmanners.com/posts/2022-01-buildah-multi-arch/
