@@ -3,6 +3,7 @@
 [![CI/CD](https://github.com/rouhim/althttpd-docker/actions/workflows/pipe.yml/badge.svg?branch=main)](https://github.com/RouHim/althttpd-docker/actions/workflows/pipe.yml)
 [![Docker Hub pulls](https://img.shields.io/docker/pulls/rouhim/althttpd.svg)](https://hub.docker.com/r/rouhim/althttpd)
 [![Docker Hub size](https://img.shields.io/docker/image-size/rouhim/althttpd)](https://hub.docker.com/r/rouhim/althttpd)
+<a href="https://hub.docker.com/r/rouhim/althttpd/tags"><img src="https://img.shields.io/badge/ARCH-amd64_•_arm64_•_arm/v7-blueviolet" alt="os-arch"></a>
 
 A 'from scratch' container image with a compressed size of 64 KB which is able to serve a static website, powered
 by [althttpd](https://sqlite.org/althttpd/doc/trunk/althttpd.md).
