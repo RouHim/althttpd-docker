@@ -26,7 +26,6 @@ jobs:
           platforms: ${{ matrix.container-image-arch }}
 
       - name: Build container image
-        id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
@@ -95,4 +94,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rouhim/althttpd
+          repository: ${{ env.IMAGE_NAME }}
