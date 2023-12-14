@@ -38,7 +38,7 @@ jobs:
         run: podman save -o ${{ matrix.container-image-arch }}.tar ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}_${{ matrix.container-image-arch }}
 
       - name: Upload container image
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.container-image-arch }}
           path: ${{ matrix.container-image-arch }}.tar
