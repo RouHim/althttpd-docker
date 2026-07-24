@@ -26,7 +26,7 @@ jobs:
           platforms: ${{ matrix.container-image-arch }}
 
       - name: Build container image
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAG }}_${{ matrix.container-image-arch }}
